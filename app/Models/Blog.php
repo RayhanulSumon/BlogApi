@@ -11,6 +11,7 @@ class Blog extends Model
 
     protected $fillable = [
         'title',
+        'user_id',
         'category_id',
         'slug',
         'caption',
@@ -20,5 +21,8 @@ class Blog extends Model
 
     public function detail(){
         return $this->hasOne(BlogDetail::class);
+    }
+    public function user(){
+        return $this->belongsTo(User::class);
     }
 }

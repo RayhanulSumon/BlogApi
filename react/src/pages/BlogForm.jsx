@@ -28,7 +28,8 @@ const BlogForm = () => {
         .then(({data}) => {
           setLoading(false)
           console.log(data)
-          setBlog(data)
+          setBlog(data.data)
+            // debugger
         })
         .catch(() => {
           setLoading(false)
@@ -86,10 +87,11 @@ const BlogForm = () => {
           <input value={blog.author} onChange={e => setBlog({...blog,author:e.target.value})} placeholder="Author"/>
             <CKEditor
                 editor={ ClassicEditor }
-                data=""
+                data={blog.description}
                 onReady={ editor => {
                     // You can store the "editor" and use when it is needed.
                     // console.log( 'Editor is ready to use!', editor );
+
                 } }
                 onChange={ ( event, editor ) => {
 
@@ -104,7 +106,8 @@ const BlogForm = () => {
                 onFocus={ ( event, editor ) => {
                     // console.log( 'Focus.', editor );
                 } }
-            /> <br/>
+            />
+            <br/>
             <input value={blog.keywords} onChange={e => setBlog({...blog,keywords:e.target.value})} placeholder="Keywords"/>
 
             <input  type="file" value={blog.caption} onChange={e => setBlog({...blog,caption:e.target.value})} placeholder="Select Image"/>

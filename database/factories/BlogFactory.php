@@ -19,6 +19,7 @@ class BlogFactory extends Factory
     {
         return [
             'title' => fake()->sentence(10),
+            'user_id' => 1,
             'slug' => fake()->unique()->sentence(5),
             'author' => fake()->name(),
 
